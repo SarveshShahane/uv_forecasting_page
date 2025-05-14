@@ -1,0 +1,33 @@
+/* style.css */
+body {
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+select {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #333; /* Dark background for dropdown */
+    color: #fff; /* White text */
+    border: 1px solid #555;
+    border-radius: 5px;
+}
+
+.result {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #222; /* Dark background for result */
+    color: #fff; /* White text */
+    border: 1px solid #444;
+    border-radius: 5px;
+}
