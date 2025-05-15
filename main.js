@@ -1,4 +1,6 @@
-const apiKey = 'openuv-4bsirmao491va-io';
+document.addEventListener('DOMContentLoaded', function() {
+  updateClock();
+  const apiKey = 'openuv-4bsirmao491va-io';
 
     const cities = {
       "Mumbai": { lat: 19.0760, lon: 72.8777 },
@@ -36,6 +38,9 @@ const apiKey = 'openuv-4bsirmao491va-io';
     const selector = document.getElementById('citySelector');
     const resultDiv = document.getElementById('uvResult');
 
+    if(resultDiv.innerText === '') {
+      resultDiv.innerHTML = '<p>Select a city to get UV index data.</p>';
+    }
     // Populate city dropdown
     for (const city in cities) {
       const option = document.createElement('option');
@@ -43,11 +48,11 @@ const apiKey = 'openuv-4bsirmao491va-io';
       option.textContent = city;
       selector.appendChild(option);
     }
-
+    
     selector.addEventListener('change', async () => {
       const city = selector.value;
       const { lat, lon } = cities[city];
-
+      
       resultDiv.innerHTML = 'Loading...';
 
       try {
@@ -87,3 +92,17 @@ const apiKey = 'openuv-4bsirmao491va-io';
       if (uv < 11) return 'Avoid sun from 10am–4pm. Use full protection.';
       return 'Extreme danger. Stay indoors if possible.';
     }
+    // Clock functionality
+function updateClock() {
+  const now = new Date();
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
+  let seconds = now.getSeconds();
+  hours = hours < 10 ? '0' + hours : hours;
+  minutes = minutes < 10 ? '0' + minutes : minutes;
+  seconds = seconds < 10 ? '0' + seconds : seconds;
+  const timeString = `${hours}:${minutes}:${seconds}`;
+  document.getElementById('clock').textContent = timeString;
+  setTimeout(updateClock, 1000);
+}
+});
